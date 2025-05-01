@@ -16,3 +16,7 @@ variable "APP_S3_BUCKET_NAME" {
 variable "REPOSITORY_URL" {
     type = string
 }
+variable "GITHUB_TOKEN" {
+    type = string
+    sensitive = true
+}
