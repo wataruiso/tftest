@@ -7,6 +7,9 @@ resource "aws_cognito_user_pool" "sandbox_test" {
     email_message = "The verification code to your new account is {####}"
     email_subject = "Your verification code"
   }
+  tags = {
+    "name" = local.pj_name
+  }
 }
 
 resource "aws_cognito_user_pool_client" "sandbox_test" {
@@ -39,6 +42,9 @@ resource "aws_cognito_identity_pool" "sandbox_test" {
     client_id     = aws_cognito_user_pool_client.sandbox_test.id
     provider_name = aws_cognito_user_pool.sandbox_test.endpoint
   }
+  tags = {
+    "name" = local.pj_name
+  }
 }
 
 # Authenticated role trust policy for the sandbox test
@@ -66,6 +72,9 @@ data "aws_iam_policy_document" "authenticated" {
 resource "aws_iam_role" "authenticated" {
   name               = "cognito_authenticated"
   assume_role_policy = data.aws_iam_policy_document.authenticated.json
+  tags = {
+    "name" = local.pj_name
+  }
 }
 
 # Identity policy for the authenticated role

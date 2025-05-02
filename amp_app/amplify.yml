@@ -9,6 +9,7 @@ frontend:
   phases:
     build:
       commands:
+      # 環境変数のエクスポート
         - npm run build
   artifacts:
     baseDirectory: dist

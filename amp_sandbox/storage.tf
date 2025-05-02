@@ -1,6 +1,9 @@
 # Storage bucket for the sandbox test
 resource "aws_s3_bucket" "sandbox_test" {
   bucket = local.pj_name
+  tags = {
+    "name" = local.pj_name
+  }
 }
 
 data "aws_iam_policy_document" "bucket_policy" {
