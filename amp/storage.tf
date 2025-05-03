@@ -54,3 +54,23 @@ resource "aws_s3_bucket_cors_configuration" "sandbox_test" {
   }
 
 }
+
+resource "aws_s3_bucket_notification" "sandbox_test" {
+  bucket = aws_s3_bucket.sandbox_test.id
+
+  lambda_function {
+    lambda_function_arn = module.lambda.lambda_function_arn
+    events             = ["s3:ObjectCreated:*"]
+    filter_prefix      = "${local.target_dir}/"
+  }
+
+  depends_on = [module.lambda]
+}
+
+resource "aws_lambda_permission" "allow_bucket" {
+  statement_id  = "AllowExecutionFromS3Bucket"
+  action        = "lambda:InvokeFunction"
+  function_name = module.lambda.lambda_function_arn
+  principal     = "s3.amazonaws.com"
+  source_arn    = aws_s3_bucket.sandbox_test.arn
+}
