@@ -43,7 +43,7 @@ resource "aws_s3_bucket_cors_configuration" "sandbox_test" {
       "POST",
       "DELETE"
     ]
-    allowed_origins = ["*"]
+    allowed_origins = ["http://localhost:5173"]
     expose_headers = [
       "x-amz-server-side-encryption",
       "x-amz-request-id",

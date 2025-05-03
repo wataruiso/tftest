@@ -33,11 +33,11 @@ resource "aws_iam_role_policy_attachment" "iam_for_lambda" {
 data "archive_file" "lambda" {
   type        = "zip"
   source_file = "${path.module}/${local.func_file.name}.${local.func_file.ext}"
-  output_path = "${path.module}/function_payload.zip"
+  output_path = "${path.module}/${local.func_file.name}_payload.zip"
 }
 
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "${path.module}/function_payload.zip"
+  filename      = "${path.module}/${local.func_file.name}_payload.zip"
   function_name = "sample_lambda_function"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "${local.func_file.name}.lambda_handler"
