@@ -9,7 +9,11 @@ frontend:
   phases:
     build:
       commands:
-      # 環境変数のエクスポート
+        - echo "APP_IDENTITY_POOL_ID=$APP_IDENTITY_POOL_ID" >> .env
+        - echo "APP_REGION=$APP_REGION" >> .env
+        - echo "APP_USER_POOL_ID=$APP_USER_POOL_ID" >> .env
+        - echo "APP_WEB_CLIENT_ID=$APP_WEB_CLIENT_ID" >> .env
+        - echo "APP_S3_BUCKET_NAME=$APP_S3_BUCKET_NAME" >> .env
         - npm run build
   artifacts:
     baseDirectory: dist
