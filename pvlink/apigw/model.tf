@@ -4,7 +4,7 @@ resource "aws_api_gateway_model" "pet" {
   name         = "Pet"
   description  = "Pet model"
   content_type = "application/json"
-  
+
   schema = <<EOF
 {
   "type": "object",
@@ -28,7 +28,7 @@ resource "aws_api_gateway_model" "new_pet" {
   name         = "NewPet"
   description  = "NewPet model"
   content_type = "application/json"
-  
+
   schema = <<EOF
 {
   "type": "object",
@@ -50,7 +50,7 @@ resource "aws_api_gateway_model" "new_pet_response" {
   name         = "NewPetResponse"
   description  = "NewPetResponse model"
   content_type = "application/json"
-  
+
   schema = <<EOF
 {
   "type": "object",
@@ -71,7 +71,7 @@ resource "aws_api_gateway_model" "pets" {
   name         = "Pets"
   description  = "Pets model"
   content_type = "application/json"
-  
+
   schema = <<EOF
 {
   "type": "array",
