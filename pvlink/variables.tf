@@ -13,9 +13,3 @@ variable "private_subnet" {
 variable "default_instance_type" {
   default = "t2.micro"
 }
-
-variable "aws_id" {
-  description = "AWS Account ID"
-  type        = string
-  sensitive   = true
-}
